@@ -12,7 +12,7 @@ defmodule KanbanBoard.CategoryJSON do
   defp data(%Categories{} = categories) do
     %{
       id: categories.id,
-      name: customer.name
+      name: categories.name
     }
   end
 end
