@@ -19,7 +19,7 @@ defmodule KanbanBoard.Card do
   def changeset(card, attrs) do
     card
     |> cast(attrs, [:title, :description, :ticket_number, :category_id])
-    |> validate_required(attrs, [:title, :ticket_number, :category_id])
+    |> validate_required([:title, :ticket_number, :category_id])
     |> foreign_key_constraint(:category_id)
     # to check kung existing yung category id
   end
