@@ -7,6 +7,9 @@ defmodule KanbanBoardWeb.Router do
 
   scope "/api", KanbanBoardWeb do
     pipe_through :api
+
+    resources "/categories", CategoryController, except: [:new, :edit]
+    resources "/cards", CardController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
