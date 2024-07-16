@@ -1,4 +1,5 @@
 defmodule KanbanBoard.Cards do
+  # logic para sa database
   import Ecto.Query, warn: false
 
   alias KanbanBoard.Card

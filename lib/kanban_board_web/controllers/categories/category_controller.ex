@@ -1,4 +1,5 @@
 defmodule KanbanBoardWeb.CategoryController do
+  # business logic
   use KanbanBoardWeb, :controller
 
   alias KanbanBoard.Categories
