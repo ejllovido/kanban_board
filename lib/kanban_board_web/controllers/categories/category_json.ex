@@ -1,18 +1,18 @@
 defmodule KanbanBoard.CategoryJSON do
-  alias KanbanBoard.Categories
+  alias KanbanBoard.Category
 
   def index(%{categories: categories}) do
-    %{data: for(category <- categories, do: data(categories))}
+    %{data: for(category <- categories, do: data(category))}
   end
 
-  def show(%{categories: categories}) do
-    %{data: data(categories)}
+  def show(%{category: category}) do
+    %{data: data(category)}
   end
 
-  defp data(%Categories{} = categories) do
+  defp data(%Category{} = category) do
     %{
-      id: categories.id,
-      name: categories.name
+      id: category.id,
+      name: category.name
     }
   end
 end

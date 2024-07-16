@@ -4,7 +4,7 @@ defmodule KanbanBoard.Card do
   alias KanbanBoard.Category
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreing_key_type :binary_id
+  @foreign_key_type :binary_id
 
   schema "cards" do
     field :title, :string

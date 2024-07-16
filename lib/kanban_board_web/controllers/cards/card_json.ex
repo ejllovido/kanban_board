@@ -1,20 +1,20 @@
 defmodule KanbanBoard.CardJSON do
-  alias KanbanBoard.Cards
+  alias KanbanBoard.Card
 
   def index(%{cards: cards}) do
-    %{data: for(card <- cards, do: data(cards))}
+    %{data: for(card <- cards, do: data(card))}
   end
 
-  def show(%{cards: cards}) do
-    %{data: data(cards)}
+  def show(%{card: card}) do
+    %{data: data(card)}
   end
 
-  defp data(%Cards{} = cards) do
+  defp data(%Card{} = card) do
     %{
-      id: cards.id,
-      title: cards.title,
-      description: cards.description,
-      ticket_number: cards.ticket_number
+      id: card.id,
+      title: card.title,
+      description: card.description,
+      ticket_number: card.ticket_number
     }
   end
 end

@@ -13,7 +13,7 @@ defmodule KanbanBoardWeb.CategoryController do
   end
 
   def create(conn, %{"category" => category_params}) do
-    with {:ok, %Category{} = category} <- Category.create_category(category_params)
+    with {:ok, %Category{} = category} <- Categories.create_category(category_params)
     do
       conn
       |> put_status(:created)
@@ -22,23 +22,23 @@ defmodule KanbanBoardWeb.CategoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    category = Category.get_category(id)
+    category = Categories.get_category(id)
     render(conn, :show, category: category)
   end
 
   def update(conn, %{"id" => id, "category" => category_params}) do
-    category = Category.get_category(id)
+    category = Categories.get_category(id)
 
-    with {:ok, %Category{} = category} <- Category.update_category(category, category_params)
+    with {:ok, %Category{} = category} <- Categories.update_category(category, category_params)
     do
       render(conn, :show, category: category)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    category = Category.get_category(id)
+    category = Categories.get_category(id)
 
-    with {:ok, %Category{}} <- Category.delete_category(category)
+    with {:ok, %Category{}} <- Categories.delete_category(category)
     do
       render(conn, :show, category: category)
     end

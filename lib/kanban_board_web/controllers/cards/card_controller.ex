@@ -13,7 +13,7 @@ defmodule KanbanBoardWeb.CardController do
   end
 
   def create(conn, %{"card" => card_params}) do
-    with {:ok, %Card{} = card} <- Card.create_card(card_params)
+    with {:ok, %Card{} = card} <- Cards.create_card(card_params)
     do
       conn
       |> put_status(:created)
@@ -22,23 +22,23 @@ defmodule KanbanBoardWeb.CardController do
   end
 
   def show(conn, %{"id" => id}) do
-    card = Card.get_card(id)
+    card = Cards.get_card(id)
     render(conn, :show, card: card)
   end
 
   def update(conn, %{"id" => id, "card" => card_params}) do
-    card = Card.get_card(id)
+    card = Cards.get_card(id)
 
-    with {:ok, %Card{} = card} <- Card.update_card(card, card_params)
+    with {:ok, %Card{} = card} <- Cards.update_card(card, card_params)
     do
       render(conn, :show, card: card)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    card = Card.get_card(id)
+    card = Cards.get_card(id)
 
-    with {:ok, %Card{}} <- Card.delete_card(card)
+    with {:ok, %Card{}} <- Cards.delete_card(card)
     do
       render(conn, :show, card: card)
     end
