@@ -5,7 +5,9 @@ defmodule KanbanBoard.Categories do
   alias KanbanBoard.Repo
 
   def list_categories do
-    Repo.all(Category)
+    Category
+    |> Repo.all()
+    |> Repo.preload(:cards)
   end
 
   def get_category(id) do
